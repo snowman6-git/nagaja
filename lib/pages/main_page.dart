@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+
 import 'home_page.dart';
+import 'drawer/license_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key}); //this를 걸어야 초기화가 됌
@@ -26,16 +29,53 @@ class _MainPage extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(
-        "나가자",
-        style: TextStyle(
-            color: Colors.black
-        ),
-      ), backgroundColor: Color(0xFFf5fffa)), // 헤더 고정
-
+      appBar: AppBar(
+        title: const Text("나가자", style: TextStyle(color: Colors.black)),
+        backgroundColor: Color(0xFFf5fffa),
+      ), // 헤더 고정
       // 소위말하는 햄버거 메뉴
       drawer: Drawer(
-        child: ListView(),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "나가자",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    "ver 0.1a",
+                    style: TextStyle(
+                      fontSize: 10.0,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            ListTile(
+              title: const Text("licence"),
+              onTap: () async {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return AppLicensePage();
+                    },
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
         backgroundColor: Color(0xFFf5fffa),
       ),
 
@@ -50,9 +90,15 @@ class _MainPage extends State<MainPage> {
         backgroundColor: Color(0xFFf5fffa),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.star), label: '핫플'),
-          BottomNavigationBarItem(icon: Icon(Icons.flag_outlined), label: '추천 루트'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flag_outlined),
+            label: '추천 루트',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.directions_bus), label: '홈'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: '시간표'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: '시간표',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: '설정'),
         ],
       ),

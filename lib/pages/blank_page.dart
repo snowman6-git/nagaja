@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   @override
@@ -8,7 +7,6 @@ class HomePage extends StatefulWidget {
     return _HomePage();
   }
 }
-
 
 class _HomePage extends State<HomePage> {
   @override

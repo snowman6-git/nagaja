@@ -12,15 +12,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
   @override
-  var bus_info_exam = BusData(number: "200", pos: "어딘가 정류정");
+  var bus_info_exam = BusData(number: "20", pos: "어딘가 정류정");
 
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          BusBlock(bus: bus_info_exam, isTop: true),
           BusBlock(bus: bus_info_exam),
-          // BusBlock(bus: bus_info_exam),
+          BusBlock(bus: bus_info_exam),
+          BusBlock(bus: bus_info_exam),
+          BusBlock(bus: bus_info_exam),
         ],
       ),
     );
